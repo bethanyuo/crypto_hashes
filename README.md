@@ -56,7 +56,7 @@ Output: JSON document, holding the following assets:
 *	AES parameter: IV (initialization vector) 
 *	The message authentication code – MAC (in hex format). 
 
-![Inputs](./images/input.png)
+![Inputs](./images/input1.png)
 
 Write a program to decrypt the encrypted message using a given password. 
 *	Derive a 512-bit key from the password using SCrypt (n=16384, r=16, p=1) with the salt (from the JSON). 
@@ -70,7 +70,7 @@ Write a program to decrypt the encrypted message using a given password.
     
 *	Decrypt the message using AES-256 (CBC mode with PKCS7 padding) using the encryption key and the IV from the JSON. 
 
-![Outputs](./images/output.png)
+![Outputs](./images/output1.png)
 
 ### Module
 MI1: Module 3: E1
