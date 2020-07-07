@@ -38,10 +38,12 @@ Note: You will also need to install openssl (v1.1.0+) for this package to work i
 ## Symmetric Encryption / Decryption
 
 Write a program to encrypt a text message using a given password. 
-*	Derive a 512-bit key from the password using SCrypt (n=16384, r=16, p=1) with random salt (256 bits). 
+*	Derive a 512-bit key from the password using SCrypt (n=16384, r=16, p=1) with random salt (256 bits).
+
     *	Split the derived key into two 256-bit sub-keys:  
         * encryption key 
         * HMAC key 
+
 *	Encrypt the message using AES-256 (CBC mode with PKCS7 padding) using the encryption key. 
     *	Use a random 256-bit IV (initialization vector). 
 *	Calculate message authentication code (MAC) using HMAC-SHA256(msg, hmac_key).
@@ -54,18 +56,21 @@ Output: JSON document, holding the following assets:
 *	AES parameter: IV (initialization vector) 
 *	The message authentication code – MAC (in hex format). 
 
-![Inputs](./images/input.jpg)
+![Inputs](./images/input.png)
 
 Write a program to decrypt the encrypted message using a given password. 
 *	Derive a 512-bit key from the password using SCrypt (n=16384, r=16, p=1) with the salt (from the JSON). 
+
     *	Split the derived key into two 256-bit sub-keys:  
         * encryption key 
         * HMAC key. 
+        
 *	Calculate message authentication code (MAC) using HMAC-SHA256(msg, hmac_key). 
     *	Compare the MAC with the MAC in the JSON document  → correct / wrong password. 
+    
 *	Decrypt the message using AES-256 (CBC mode with PKCS7 padding) using the encryption key and the IV from the JSON. 
 
-![Outputs](./images/output.jpg)
+![Outputs](./images/output.png)
 
 ### Module
 MI1: Module 3: E1
